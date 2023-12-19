@@ -6,7 +6,7 @@
 * CUDA 11.8
 * Python 3.10.12
 * [Fooocus](
-  https://github.com/lllyasviel/Fooocus) 2.1.824
+  https://github.com/lllyasviel/Fooocus) 2.1.853
 * Torch 2.1.0
 * xformers
 
