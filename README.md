@@ -38,6 +38,36 @@ docker run -d \
 
 You can obviously substitute the image name and tag with your own.
 
+### Ports
+
+| Connect Port | Internal Port | Description |
+|--------------|---------------|-------------|
+| 3000         | 3001          | Fooocus     |
+| 8888         | 8888          | Jupyter Lab |
+
+### Environment Variables
+
+| Variable           | Description                                  | Default   |
+|--------------------|----------------------------------------------|-----------|
+| JUPYTER_PASSWORD   | Password for Jupyter Lab                     | Jup1t3R!  |
+| DISABLE_AUTOLAUNCH | Disable Web UIs from launching automatically | (not set) |
+| PRESET             | Fooocus Preset (anime/realistic)             | (not set) |
+
+## Logs
+
+Fooocus creates a log file, and you can tail the log instead of
+killing the service to view the logs.
+
+| Application | Log file                      |
+|-------------|-------------------------------|
+| Fooocus     | /workspace/logs/fooocus.log   |
+
+For example:
+
+```bash
+tail -f /workspace/logs/fooocus.log
+```
+
 ## Community and Contributing
 
 Pull requests and issues on [GitHub](https://github.com/ashleykleynhans/fooocus-docker)
