@@ -15,6 +15,9 @@ rsync -au /Fooocus/ /workspace/Fooocus/
 echo "Fixing venv..."
 /fix_venv.sh /venv /workspace/venv
 
+# Create logs directory
+mkdir -p /workspace/logs
+
 if [[ ${DISABLE_AUTOLAUNCH} ]]
 then
     echo "Auto launching is disabled so the application will not be started automatically"
@@ -24,7 +27,6 @@ then
     echo "   deactivate && source /workspace/venv/bin/activate"
     echo "   python3 entry_with_update.py --listen --port 3001"
 else
-    mkdir -p /workspace/logs
     echo "Starting Fooocus"
     export HF_HOME="/workspace"
     source /workspace/venv/bin/activate
