@@ -72,6 +72,7 @@ ENV TORCH_INDEX_URL="https://download.pytorch.org/whl/cu118"
 ENV TORCH_COMMAND="pip install torch==2.0.1 torchvision --index-url ${TORCH_INDEX_URL}"
 ENV XFORMERS_PACKAGE="xformers==0.0.22"
 RUN source /venv/bin/activate && \
+    ${TORCH_COMMAND} && \
     pip3 install -r requirements_versions.txt --extra-index-url ${TORCH_INDEX_URL} && \
     pip3 install ${XFORMERS_PACKAGE} &&  \
     sed '$d' launch.py > setup.py && \
