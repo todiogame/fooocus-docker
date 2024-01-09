@@ -69,10 +69,10 @@ RUN git clone https://github.com/lllyasviel/Fooocus.git && \
 # Install the dependencies for Fooocus
 WORKDIR /Fooocus
 ENV TORCH_INDEX_URL="https://download.pytorch.org/whl/cu118"
+ENV TORCH_COMMAND="pip install torch==2.1.2 torchvision --index-url ${TORCH_INDEX_URL}"
+ENV XFORMERS_PACKAGE="xformers==0.0.22"
 RUN source /venv/bin/activate && \
-    pip3 install --no-cache-dir torch==2.1.2 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118 && \
-    pip3 install -r requirements_versions.txt --extra-index-url https://download.pytorch.org/whl/cu118 && \
-    pip3 install xformers==0.0.22 && \
+    pip3 install -r requirements_versions.txt --extra-index-url ${TORCH_INDEX_URL} && \
     sed '$d' launch.py > setup.py && \
     python3 -m setup && \
     deactivate

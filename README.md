@@ -8,7 +8,7 @@
 * [Fooocus](
   https://github.com/lllyasviel/Fooocus) 2.1.862
 * Torch 2.1.2
-* xformers
+* xformers 0.0.22
 * [runpodctl](https://github.com/runpod/runpodctl)
 * [croc](https://github.com/schollz/croc)
 * [rclone](https://rclone.org/)
