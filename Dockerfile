@@ -1,7 +1,7 @@
 # Stage 1: Base
 FROM nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04 as base
 
-ARG FOOOCUS_COMMIT=624f74a1ed78ea09467c856cef35aeee0af863f6
+ARG FOOOCUS_COMMIT=6261f17561c65df4d90564b43751c2fc94e8c4d3
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 ENV DEBIAN_FRONTEND=noninteractive \
@@ -70,7 +70,7 @@ RUN git clone https://github.com/lllyasviel/Fooocus.git && \
 WORKDIR /Fooocus
 ENV TORCH_INDEX_URL="https://download.pytorch.org/whl/cu118"
 RUN source /venv/bin/activate && \
-    pip3 install --no-cache-dir torch==2.0.1 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118 && \
+    pip3 install --no-cache-dir torch==2.1.2 torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118 && \
     pip3 install -r requirements_versions.txt --extra-index-url https://download.pytorch.org/whl/cu118 && \
     pip3 install xformers==0.0.22 && \
     sed '$d' launch.py > setup.py && \
