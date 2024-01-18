@@ -1,7 +1,7 @@
 # Stage 1: Base
 FROM nvidia/cuda:11.8.0-cudnn8-devel-ubuntu22.04 as base
 
-ARG FOOOCUS_COMMIT=6261f17561c65df4d90564b43751c2fc94e8c4d3
+ARG FOOOCUS_COMMIT=dc5b5238c83c63b4d7814ba210da074ddc341213
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 ENV DEBIAN_FRONTEND=noninteractive \
@@ -115,5 +115,6 @@ WORKDIR /
 COPY --chmod=755 scripts/* ./
 
 # Start the container
+ENV TEMPLATE_VERSION=2.1.862
 SHELL ["/bin/bash", "--login", "-c"]
 ENTRYPOINT [ "/start.sh" ]
