@@ -13,11 +13,11 @@ fi
 sync_apps() {
     # Sync venv to workspace to support Network volumes
     echo "Syncing venv to workspace, please wait..."
-    rsync --remove-source-files -rlptDu /venv/ /workspace/venv/
+    rsync -rlptDu /venv/ /workspace/venv/
 
     # Sync Fooocus to workspace to support Network volumes
     echo "Syncing Fooocus to workspace, please wait..."
-    rsync --remove-source-files -rlptDu /Fooocus/ /workspace/Fooocus/
+    rsync -rlptDu /Fooocus/ /workspace/Fooocus/
 
     echo "${TEMPLATE_VERSION}" > /workspace/template_version
 }
