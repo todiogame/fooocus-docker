@@ -13,6 +13,7 @@ fi
 sync_apps() {
     # Sync venv to workspace to support Network volumes
     echo "Syncing venv to workspace, please wait..."
+    # We can't remove the source files here otherwise it breaks Fooocus
     rsync -rlptDu /venv/ /workspace/venv/
 
     # Sync Fooocus to workspace to support Network volumes
