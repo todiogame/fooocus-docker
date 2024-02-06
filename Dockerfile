@@ -42,10 +42,14 @@ RUN apt update && \
         zip \
         unzip \
         htop \
+        screen \
+        tmux \
         pkg-config \
         libcairo2-dev \
-        libgoogle-perftools4 libtcmalloc-minimal4 \
-        apt-transport-https ca-certificates && \
+        libgoogle-perftools4 \
+        libtcmalloc-minimal4 \
+        apt-transport-https \
+        ca-certificates && \
     update-ca-certificates && \
     apt clean && \
     rm -rf /var/lib/apt/lists/* && \
