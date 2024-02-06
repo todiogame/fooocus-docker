@@ -121,4 +121,4 @@ COPY --chmod=755 scripts/* ./
 # Start the container
 ENV TEMPLATE_VERSION=2.1.864
 SHELL ["/bin/bash", "--login", "-c"]
-ENTRYPOINT [ "/start.sh" ]
+CMD [ "/start.sh" ]
