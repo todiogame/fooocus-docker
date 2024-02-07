@@ -112,10 +112,11 @@ RUN rm -f /etc/ssh/ssh_host_*
 COPY nginx/nginx.conf /etc/nginx/nginx.conf
 COPY nginx/502.html /usr/share/nginx/html/502.html
 
-# Set up the container startup script
-WORKDIR /
+# Copy Fooocus config
+COPY fooocus/config.txt /Fooocus/config.txt
 
 # Copy the scripts
+WORKDIR /
 COPY --chmod=755 scripts/* ./
 
 # Start the container
