@@ -82,6 +82,10 @@ RUN source /venv/bin/activate && \
     sed '$d' launch.py > setup.py && \
     python3 -m setup && \
     deactivate
+    
+# Replace juggernautXL v8 with the v6 version
+RUN rm -f /Fooocus/models/checkpoints/*
+RUN wget -O /Fooocus/models/checkpoints/juggernautXL_version6.safetensors https://civitai.com/api/download/models/198530
 
 # Install Jupyter
 RUN pip3 install -U --no-cache-dir jupyterlab \
