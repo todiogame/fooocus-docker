@@ -87,18 +87,24 @@ RUN source /venv/bin/activate && \
 RUN rm -f /Fooocus/models/checkpoints/*
 RUN wget -O /Fooocus/models/checkpoints/juggernautXL_version6.safetensors https://civitai.com/api/download/models/198530
 
-# Install Jupyter
+# Install Jupyter, gdown and OhMyRunPod
 RUN pip3 install -U --no-cache-dir jupyterlab \
         jupyterlab_widgets \
         ipykernel \
         ipywidgets \
-        gdown
+        gdown \
+        OhMyRunPod
+
+# Install RunPod File Uploader
+RUN curl -sSL https://github.com/kodxana/RunPod-FilleUploader/raw/main/scripts/installer.sh -o installer.sh && \
+    chmod +x installer.sh && \
+    ./installer.sh
 
 # Install rclone
 RUN curl https://rclone.org/install.sh | bash
 
 # Install runpodctl
-RUN wget https://github.com/runpod/runpodctl/releases/download/v1.10.0/runpodctl-linux-amd -O runpodctl && \
+RUN wget https://github.com/runpod/runpodctl/releases/download/v1.13.0/runpodctl-linux-amd64 -O runpodctl && \
     chmod a+x runpodctl && \
     mv runpodctl /usr/local/bin
 
@@ -119,11 +125,13 @@ COPY nginx/502.html /usr/share/nginx/html/502.html
 # Copy Fooocus config
 COPY fooocus/config.txt /Fooocus/config.txt
 
+# Set template version
+ENV TEMPLATE_VERSION=2.1.865
+
 # Copy the scripts
 WORKDIR /
 COPY --chmod=755 scripts/* ./
 
 # Start the container
-ENV TEMPLATE_VERSION=2.1.865
 SHELL ["/bin/bash", "--login", "-c"]
 CMD [ "/start.sh" ]
